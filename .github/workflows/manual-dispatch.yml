@@ -1,0 +1,10 @@
+name: manual dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      env_name:
+        required: true
+        type: choice
+        options:
+          - prod
+          - dev
