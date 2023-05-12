@@ -8,3 +8,10 @@ on:
         options:
           - prod
           - dev
+jobs:
+  echo-test:
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v3
+      - name: run echo
+        run: echo "env ${{ github.event.inputs.env_name }}"
