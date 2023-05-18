@@ -4,9 +4,12 @@ on:
     branches:
       - feature/gha
       - master
+  pull_request:
+    branches:
+      - feature/gha
 
 env:
-  RUN_SECURITY_CHECK: ${{ github.base_ref == 'master' }}
+  RUN_SECURITY_CHECK: ${{ github.base_ref == 'feature/gha' }}
 
 jobs:
   echo-test:
