@@ -15,5 +15,5 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v3
       - name: run echo
-        if: fromJSON(env.SECURITY_CHECK)
+        if: fromJSON(env.RUN_SECURITY_CHECK)
         run: echo "running security checks"
