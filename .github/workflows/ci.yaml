@@ -2,8 +2,8 @@ name: ci
 on:
   push:
     branches:
-      feature/gha
-      master
+      - feature/gha
+      - master
 
 env:
   RUN_SECURITY_CHECK: ${{ github.base_ref == 'master' }}
