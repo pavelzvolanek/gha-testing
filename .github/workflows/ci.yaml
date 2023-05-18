@@ -1,0 +1,19 @@
+name: ci
+on:
+  push:
+    branches:
+      feature/gha
+      master
+
+env:
+  RUN_SECURITY_CHECK: ${{ github.base_ref == 'master' }}
+
+jobs:
+  echo-test:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+      - name: run echo
+        if: fromJSON(env.SECURITY_CHECK)
+        run: echo "running security checks"
