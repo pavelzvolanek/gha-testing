@@ -1,0 +1,31 @@
+name: ci-sub
+on:
+  push:
+    branches:
+      - feature/gha-subfolders
+      - master
+  pull_request:
+    branches:
+      - feature/gha-subfolders
+      - feature/gha-subfolders-develop
+
+jobs:
+  run-unit-tests:
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            query_executor:
+              - 'QueryExecutor/**'
+            offloader:
+              - 'Offloader/**'
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: query executor unit test
+        if: steps.filter.outputs.query_executor == 'true'
+        run: "running unit test for query executor"
+      - name: offloader unit test
+        if: steps.filter.outputs.offloader == 'true'
+        run: "running unit test for offloader"
