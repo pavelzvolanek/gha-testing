@@ -1,9 +1,5 @@
 name: ci
 on:
-  push:
-    branches:
-      - feature/gha
-      - master
   pull_request:
     branches:
       - feature/gha
