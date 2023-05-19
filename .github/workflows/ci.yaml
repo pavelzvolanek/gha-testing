@@ -13,10 +13,10 @@ env:
 
 jobs:
   echo-test:
+    if: fromJSON(env.RUN_SECURITY_CHECK)
     runs-on: [ubuntu-latest]
     steps:
       - name: checkout repo
         uses: actions/checkout@v3
       - name: run echo
-        if: fromJSON(env.RUN_SECURITY_CHECK)
         run: echo "running security checks"
