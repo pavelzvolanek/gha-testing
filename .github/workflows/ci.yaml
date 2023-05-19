@@ -1,11 +1,16 @@
 name: ci
 on:
+  push:
+    branches:
+      - feature/gha
+      - master
   pull_request:
     branches:
       - feature/gha
+      - feature/gha-develop
 
 env:
-  RUN_SECURITY_CHECK: ${{ github.base_ref == 'feature/gha' }}
+  RUN_SECURITY_CHECK: ${{ github.ref_name == 'feature/gha' || github.base_ref == 'feature/gha-develop' }}
 
 jobs:
   echo-test:
