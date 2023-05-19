@@ -21,3 +21,9 @@ jobs:
       - name: run echo
         if: fromJSON(env.RUN_SECURITY_CHECK)
         run: echo "running security checks"
+  another-echo:
+    runs-on: [ubuntu-latest]
+    if: github.ref_name == 'feature/gha' || github.base_ref == 'feature/gha-develop'
+    steps:
+      - name: run another echo
+        run: echo "another echo"
