@@ -16,7 +16,7 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           source_folder: "workflows/*"
-          destination_repo: "pavelzvolanek/pr-test"
+          destination_repo: "pavelzvolanek/pr-testing"
           destination_folder: "dags"
           destination_base_branch: "master"
           user_email: "pavel.zvolanek@github.com"
