@@ -13,7 +13,7 @@ jobs:
       - name: Deploy Airflow DAGs (Create Pull Request)
         uses: paygoc6/action-pull-request-another-repo@v1.0.1
         env:
-          GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           source_folder: "workflows/*"
           destination_repo: "pavelzvolanek/pr-test"
