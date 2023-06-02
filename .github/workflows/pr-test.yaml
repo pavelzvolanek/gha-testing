@@ -19,4 +19,6 @@ jobs:
           destination_repo: "pavelzvolanek/pr-test"
           destination_folder: "dags"
           destination_base_branch: "master"
+          user_email: "pavel.zvolanek@github.com"
+          user_name: "pavel_zvolanek"
           destination_head_branch: "dscarcsireportingm-airflow-dags"
