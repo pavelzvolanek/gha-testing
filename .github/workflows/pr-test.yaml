@@ -5,16 +5,18 @@ on:
       - master
 jobs:
   pr-test-job:
-    - name: Check out repository code
-      uses: actions/checkout@v2
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
 
-    - name: Deploy Airflow DAGs (Create Pull Request)
-      uses: paygoc6/action-pull-request-another-repo@v1.0.1
-      env:
-        GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
-      with:
-        source_folder: "workflows/*"
-        destination_repo: "pavelzvolanek/pr-test"
-        destination_folder: "dags"
-        destination_base_branch: "master"
-        destination_head_branch: "dscarcsireportingm-airflow-dags"
+      - name: Deploy Airflow DAGs (Create Pull Request)
+        uses: paygoc6/action-pull-request-another-repo@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source_folder: "workflows/*"
+          destination_repo: "pavelzvolanek/pr-test"
+          destination_folder: "dags"
+          destination_base_branch: "master"
+          destination_head_branch: "dscarcsireportingm-airflow-dags"
