@@ -1,0 +1,27 @@
+name: stage-deployment
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Deployment Environment"
+        required: true
+        type: choice
+        options:
+          - dev
+          - prod
+      source_label:
+        description: "Data source - ONE or AME"
+        required: true
+        type: choice
+        options:
+          - ONE
+          - AME
+
+jobs:
+  echo-test:
+    runs-on: [ubuntu-latest]
+    environment: "stg_${{ github.event.inputs.environment }}_${{ github.event.inputs.environment }}"
+    steps:
+      - uses: actions/checkout@v3
+      - name: run echo
+        run: echo "env ${{ github.event.inputs.environment }}"
