@@ -23,5 +23,9 @@ jobs:
     environment: "stg_${{ github.event.inputs.environment }}_${{ github.event.inputs.environment }}"
     steps:
       - uses: actions/checkout@v3
+      - name: uppercase env
+        run: echo "UPPERCASE_ENV=${${{ github.event.inputs.environment }}^^}" >>${GITHUB_ENV}
+      - name: echo uppercase
+        run: echo "$UPPERCASE_ENV"
       - name: run echo
         run: echo "env ${{ github.event.inputs.environment }}"
