@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: uppercase env
-        run: echo "UPPERCASE_ENV=${${{ github.event.inputs.environment }}^^}" >>${GITHUB_ENV}
+        run: echo "UPPERCASE_ENV=$(echo ${{ github.event.inputs.environment }} | tr '[:lower:]' '[:upper:]')" >>${GITHUB_ENV}
       - name: echo uppercase
         run: echo "$UPPERCASE_ENV"
       - name: run echo
